@@ -53,7 +53,7 @@ async def exec(cmd):
 async def account_login(bot: Client, m: Message):
  editable = await m.reply_text("**Pradhan this side send /down download and for classplus send /cpd  for /dhurina for /vision**")
 
-@bot.on_message(filters.command(["down"]))
+@bot.on_message(filters.command(["Sachin"]))
 async def account_login(bot: Client, m: Message):
     global cancel
     cancel = False
@@ -796,6 +796,6 @@ async def account_login(bot: Client, m: Message):
                 continue
     except Exception as e:
         await m.reply_text(str(e))
-    await m.reply_text("Done")
+    await m.reply_text("मलिक निकाल दिया बैच")
     
 bot.run()    
