@@ -1,8 +1,10 @@
-FROM python 3.11.4-slim-buster''
+FROM python:3.9.7-slim-buster''
+RUN apt-get update -y && apt-get upgrade -y \
+    && apt-get install -y --no-install-recommends gcc libffi-dev musl-dev ffmpeg aria2 python3-pip \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-
-WORKDIR .
-RUN apt -qq update && apt -qq install -y git wget pv jq python3-dev ffmpeg mediainfo
-COPY . .
-RUN pip3 install -r requirements.txt
-CMD ["bash start.sh"]
+COPY . /app/
+WORKDIR /app/
+RUN pip3 install --no-cache-dir --upgrade --requirement Installer
+CMD python3 modules/main.py
